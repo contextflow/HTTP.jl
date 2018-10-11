@@ -328,7 +328,8 @@ hasheader(m, k::AbstractString) = header(m, k) != ""
 Does header for `key` match `value` (both case-insensitive)?
 """
 hasheader(m, k::AbstractString, v::AbstractString) =
-    lowercase(header(m, k)) == lowercase(v)
+    occursin(lowercase(v), lowercase(header(m, k)))
+    # lowercase(header(m, k)) == lowercase(v)
 
 """
     setheader(::Message, key => value)
