@@ -39,9 +39,9 @@ function request(::Type{ConnectionPoolLayer{Next}}, url::URI, req, body;
     io = getconnection(IOType, url.host, url.port; reuse_limit=reuse_limit, kw...)
 
     try
-        if proxy !== nothing && target_url.scheme == "https"
-            return tunnel_request(Next, io, target_url, req, body; kw...)
-        end
+        # if proxy !== nothing && target_url.scheme == "https"
+        #     return tunnel_request(Next, io, target_url, req, body; kw...)
+        # end
 
         return request(Next, io, req, body; kw...)
 
